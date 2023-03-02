@@ -67,7 +67,6 @@ export class ShowcasedWorksController {
       ...createShowcaseWorkDto,
       photo: file?.filename,
     };
-    console.log(createShowcasedWork);
     return this.showcasedWorksService.create(createShowcasedWork);
   }
 
