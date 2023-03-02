@@ -59,7 +59,7 @@ export class ShowcasedWorksController {
 
   @Post()
   @UseInterceptors(FileInterceptor('photo', storage))
-  uploadFile(
+  create(
     @UploadedFile() file: Express.Multer.File,
     @Body() createShowcaseWorkDto: CreateShowcasedWorkDto,
   ): Promise<ShowcasedWork> {
@@ -78,7 +78,7 @@ export class ShowcasedWorksController {
 
   @Put(':id')
   @UseInterceptors(FileInterceptor('photo', storage))
-  updateFile(
+  update(
     @UploadedFile() file: Express.Multer.File,
     @Body() updateShowcaseWorkDto: CreateShowcasedWorkDto,
     @Param('id') id: string,
