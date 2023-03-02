@@ -13,8 +13,12 @@ export class ShowcasedWorksService {
     private showcasedWorkModel: Model<ShowcasedWorkDocument>,
   ) {}
 
-  async findAll(): Promise<ShowcasedWork[]> {
-    return await this.showcasedWorkModel.find();
+  async findVisible(): Promise<ShowcasedWork[]> {
+    return await this.showcasedWorkModel.find({ isVissible: true });
+  }
+
+  async findHidden(): Promise<ShowcasedWork[]> {
+    return await this.showcasedWorkModel.find({ isVissible: false });
   }
 
   async findById(id: string): Promise<ShowcasedWork> {
@@ -30,7 +34,9 @@ export class ShowcasedWorksService {
     id: string,
     showcasedWork: ShowcasedWork,
   ): Promise<ShowcasedWork> {
-    return await this.showcasedWorkModel.findByIdAndUpdate(id, showcasedWork, {new: true});
+    return await this.showcasedWorkModel.findByIdAndUpdate(id, showcasedWork, {
+      new: true,
+    });
   }
 
   async delete(id: string): Promise<ShowcasedWork> {

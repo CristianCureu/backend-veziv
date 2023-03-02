@@ -9,10 +9,13 @@ export class ShowcasedWork {
   title: string;
 
   @Prop({ required: false })
-  description: string;
+  url: string;
 
   @Prop({ required: false })
-  url: string;
+  photo: string;
+
+  @Prop({ required: false, default: true })
+  isVissible: boolean;
 }
 
 export const ShowcasedWorkSchema = SchemaFactory.createForClass(ShowcasedWork);
